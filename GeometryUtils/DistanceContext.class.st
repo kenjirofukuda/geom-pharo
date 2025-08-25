@@ -64,7 +64,7 @@ DistanceContext >> endPoint: aPoint [
 
 { #category : #accessing }
 DistanceContext >> endToCross [
-	^ endToCross ifNil: [endToCross := lineSegment end dist: self crossPoint]
+	^ endToCross ifNil: [endToCross := lineSegment end distanceTo: self crossPoint]
 ]
 
 { #category : #accessing }
@@ -112,7 +112,7 @@ DistanceContext >> startPoint: aPoint [
 
 { #category : #accessing }
 DistanceContext >> startToCross [
-	^ startToCross ifNil: [startToCross := lineSegment start dist: self crossPoint]
+	^ startToCross ifNil: [startToCross := lineSegment start distanceTo: self crossPoint]
 ]
 
 { #category : #accessing }

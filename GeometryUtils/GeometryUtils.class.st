@@ -77,15 +77,15 @@ GeometryUtils class >> distanceMapAt: aPoint segment: aLineSegment [
 	distanceMap at: #virtualCrossPoint put: p copy.
 	p := (distanceMap at: #virtualCrossPoint) adhereTo: aLineSegment bounds.
 	distanceMap at: #crossPoint put: p copy.
-	distP := p dist: aPoint.
+	distP := p distanceTo: aPoint.
 	distanceMap at: #cross put: distP copy.
-	distP := aLineSegment start dist: aPoint.
+	distP := aLineSegment start distanceTo: aPoint.
 	distanceMap at: #start put: distP copy.
-	distP := aLineSegment start dist: (distanceMap at: #crossPoint).
+	distP := aLineSegment start distanceTo: (distanceMap at: #crossPoint).
 	distanceMap at: #startToCross put: distP copy.
-	distP := aLineSegment end dist: aPoint.
+	distP := aLineSegment end distanceTo: aPoint.
 	distanceMap at: #end put: distP copy.
-	distP := aLineSegment end dist: (distanceMap at: #crossPoint).
+	distP := aLineSegment end distanceTo: (distanceMap at: #crossPoint).
 	distanceMap at: #endToCross put: distP copy.
 	distanceMap at: #side put: (aLineSegment sideOfPoint: aPoint).
 	^ distanceMap
@@ -332,7 +332,7 @@ GeometryUtils class >> splitSegment: aLineSegment crossPoints: aCrossPoints epsi
 					points := OrderedCollection new.
 					points add: aLineSegment start.
 					sorted := tpArray
-						sort: [ :a :b | (a dist: aLineSegment start) < (b dist: aLineSegment start) ].
+						sort: [ :a :b | (a distanceTo: aLineSegment start) < (b distanceTo: aLineSegment start) ].
 					points addAll: sorted.
 					points add: aLineSegment end.
 					points
